@@ -53,7 +53,7 @@ colnames(datasmall) <- cname
 
 tidy <- aggregate(datasmall[3:81], by=list(datasmall$subject, datasmall$activity), FUN=mean, na.rm=TRUE) #calculate the mean of each variable for each subject and activity
 colnames(tidy)[c(1,2)] <- c("Subject", "Activity") #give the variables nice names
-head(arrange(tidy,tidy$Subject),30) #order the list by subject so you can now see each mean() grouped by each subject
+tidy <- arrange(tidy,tidy$Activity, tidy$Subject) #Order the list by Activity and then Subject
 
 write.table(tidy,file="tidy.txt") #write out the table with the txt extension
 
